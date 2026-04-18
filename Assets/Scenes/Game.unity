@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   <wheelPosition>k__BackingField: 0
-  MAX_STEER: 0
+  MAX_STEER: 100
 --- !u!1 &771925975
 GameObject:
   m_ObjectHideFlags: 0
