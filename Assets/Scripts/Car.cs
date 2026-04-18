@@ -27,12 +27,20 @@ public class Car : MonoBehaviour
         {
             Brake();
         }
+        else
+        {
+            Unbrake();
+        }
         Steer(steeringWheel.wheelPosition);
     }
 
     private void Brake()
     {
         // Frenar
+    }
+    private void Unbrake()
+    {
+        // Desfrenar 
     }
 
     private void Steer(float wheelPosition)
