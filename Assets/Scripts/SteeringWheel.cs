@@ -18,19 +18,18 @@ public class SteeringWheel : MonoBehaviour
 
     void Update()
     {
-        // si is press = true
-        // -> comparo posicion actual del mouse con la guardada (Actual - guardada) = guardo eso en wheelposition (no se tiene que pasar del maxSTEER)
-       
         if (isPressing)
         {
             wheelPosition = Math.Clamp((Input.mousePosition.x - mouseClickPosition), -MAX_STEER, MAX_STEER);
+            //Rotar el volante
+            transform.rotation = Quaternion.Euler(0, 0, -wheelPosition);
         }
+
     }
 
     private void OnMouseDown()
     {
         //Guardo posicion del mouse
-
         mouseClickPosition = Input.mousePosition.x;
         isPressing = true;
     }
