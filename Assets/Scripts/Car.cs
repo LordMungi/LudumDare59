@@ -55,6 +55,6 @@ public class Car : MonoBehaviour
         // Girar el volante
         horizontalSpeed = Math.Clamp(horizontalSpeed + wheelPosition * Time.deltaTime, -MAX_HORIZONTAL_SPEED, MAX_HORIZONTAL_SPEED);
 
-        car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), 0 ,0);
+        car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), car.transform.position.y, car.transform.position.z);
     }
 }
