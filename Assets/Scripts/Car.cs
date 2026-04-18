@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
@@ -52,5 +53,8 @@ public class Car : MonoBehaviour
     private void Steer(float wheelPosition)
     {
         // Girar el volante
+        horizontalSpeed = Math.Clamp(horizontalSpeed + wheelPosition * Time.deltaTime, -MAX_HORIZONTAL_SPEED, MAX_HORIZONTAL_SPEED);
+
+        car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), 0 ,0);
     }
 }
