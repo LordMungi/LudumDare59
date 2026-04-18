@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   handbrake: {fileID: 2065975313}
-  steeringWheel: {fileID: 0}
+  steeringWheel: {fileID: 68788437}
   INITIAL_SPEED: 100
   BRAKE_SPEED: 50
   UNBRAKE_SPEED: 50
