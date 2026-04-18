@@ -1055,6 +1055,7 @@ GameObject:
   - component: {fileID: 1775337032}
   - component: {fileID: 1775337031}
   - component: {fileID: 1775337030}
+  - component: {fileID: 1775337035}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -1173,6 +1174,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1775337035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775337029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a188c9afc14ad24f82358b173707d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MenuButtons
+  playButton: {fileID: 321718479}
+  creditsButton: {fileID: 757077754}
+  exitButton: {fileID: 595170992}
 --- !u!1 &2056441050
 GameObject:
   m_ObjectHideFlags: 0
