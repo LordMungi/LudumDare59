@@ -10,20 +10,26 @@ public class Car : MonoBehaviour
     [SerializeField] private float BRAKE_SPEED; // Velocidad de desaceleración al usar el freno
     [SerializeField] private float UNBRAKE_SPEED; // Aceleración al dejar de frenar
 
+
     [SerializeField] private float MAX_HORIZONTAL_POSITION; // Limite de posición horizontal del auto
     [SerializeField] private float MAX_HORIZONTAL_SPEED; // Acelerazión máxima horizontal
 
+
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
+    private float maxSpeed;
+
 
     private float horizontalSpeed;
 
     void Start()
     {
-       speed = INITIAL_SPEED;
+       maxSpeed = INITIAL_SPEED;
+        
     }
 
     void Update()
     {
+        maxSpeed += Time.deltaTime;
         if (handbrake.isPressed)
         {
             Brake();
@@ -45,7 +51,7 @@ public class Car : MonoBehaviour
     private void Unbrake()
     {
         // Desfrenar 
-        speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, INITIAL_SPEED);
+       speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, maxSpeed);
     }
 
     private void Steer(float wheelPosition)
