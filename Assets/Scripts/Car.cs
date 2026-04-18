@@ -59,11 +59,15 @@ public class Car : MonoBehaviour
     private void Steer(float wheelPosition)
     {
         // Girar el volante
+        if (Math.Abs(car.transform.position.x) == MAX_HORIZONTAL_POSITION)
+            horizontalSpeed = 0;
+
         if (wheelPosition > horizontalSpeed)
             horizontalSpeed = Math.Min(horizontalSpeed + HORIZONTAL_ACCELERATION * Time.deltaTime, wheelPosition);
         else
             horizontalSpeed = Math.Max(horizontalSpeed - HORIZONTAL_ACCELERATION * Time.deltaTime, wheelPosition);
 
         car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), car.transform.position.y, car.transform.position.z);
+
     }
 }
