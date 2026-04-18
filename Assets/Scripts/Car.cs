@@ -14,7 +14,7 @@ public class Car : MonoBehaviour
 
 
     [SerializeField] private float MAX_HORIZONTAL_POSITION; // Limite de posición horizontal del auto
-    [SerializeField] private float MAX_HORIZONTAL_SPEED; // Acelerazión máxima horizontal
+    [SerializeField] private float HORIZONTAL_ACCELERATION; // Aceleración horizontal
 
 
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
@@ -59,7 +59,10 @@ public class Car : MonoBehaviour
     private void Steer(float wheelPosition)
     {
         // Girar el volante
-        horizontalSpeed = Math.Clamp(horizontalSpeed + wheelPosition * Time.deltaTime, -MAX_HORIZONTAL_SPEED, MAX_HORIZONTAL_SPEED);
+        if (wheelPosition > horizontalSpeed)
+            horizontalSpeed = Math.Min(horizontalSpeed + HORIZONTAL_ACCELERATION * Time.deltaTime, wheelPosition);
+        else
+            horizontalSpeed = Math.Max(horizontalSpeed - HORIZONTAL_ACCELERATION * Time.deltaTime, wheelPosition);
 
         car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), car.transform.position.y, car.transform.position.z);
     }
