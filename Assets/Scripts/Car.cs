@@ -19,7 +19,7 @@ public class Car : MonoBehaviour
 
     void Start()
     {
-        
+       speed = INITIAL_SPEED;
     }
 
     void Update()
@@ -33,6 +33,8 @@ public class Car : MonoBehaviour
             Unbrake();
         }
         Steer(steeringWheel.wheelPosition);
+
+        Debug.Log(speed);
     }
 
     private void Brake()

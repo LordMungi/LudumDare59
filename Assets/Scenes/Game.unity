@@ -237,7 +237,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   handbrake: {fileID: 2065975313}
   steeringWheel: {fileID: 0}
-  <position>k__BackingField: 0
+  INITIAL_SPEED: 100
+  BRAKE_SPEED: 50
+  UNBRAKE_SPEED: 50
+  MAX_HORIZONTAL_POSITION: 0
+  MAX_HORIZONTAL_SPEED: 0
   <speed>k__BackingField: 0
 --- !u!1 &68788434
 GameObject:
@@ -332,6 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   <wheelPosition>k__BackingField: 0
+  MAX_STEER: 0
 --- !u!1 &771925975
 GameObject:
   m_ObjectHideFlags: 0
