@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SteeringWheel : MonoBehaviour
@@ -9,6 +10,7 @@ public class SteeringWheel : MonoBehaviour
     private float mouseClickPosition = 0.0f;
     private bool isPressing = false;
 
+
     void Start()
     {
         
@@ -16,11 +18,20 @@ public class SteeringWheel : MonoBehaviour
 
     void Update()
     {
-        
+        // si is press = true
+        // -> comparo posicion actual del mouse con la guardada (Actual - guardada) = guardo eso en wheelposition (no se tiene que pasar del maxSTEER)
+       
+        if (isPressing)
+        {
+            wheelPosition = Math.Clamp((Input.mousePosition.x - mouseClickPosition), -MAX_STEER, MAX_STEER);
+        }
     }
 
     private void OnMouseDown()
     {
+        //Guardo posicion del mouse
+
+        mouseClickPosition = Input.mousePosition.x;
         isPressing = true;
     }
 
