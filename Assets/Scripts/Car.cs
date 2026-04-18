@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 public class Car : MonoBehaviour
 {
@@ -37,10 +38,12 @@ public class Car : MonoBehaviour
     private void Brake()
     {
         // Frenar
+        speed = Mathf.Max(speed - BRAKE_SPEED * Time.deltaTime, 0);
     }
     private void Unbrake()
     {
         // Desfrenar 
+        speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, INITIAL_SPEED);
     }
 
     private void Steer(float wheelPosition)
