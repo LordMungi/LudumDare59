@@ -5,6 +5,7 @@ public class Car : MonoBehaviour
 {
     [SerializeField] Handbrake handbrake;
     [SerializeField] SteeringWheel steeringWheel;
+    [SerializeField] Camera car;
 
     [SerializeField] private float INITIAL_SPEED; // Velocidad inicial al empezar el juego
     [SerializeField] private float BRAKE_SPEED; // Velocidad de desaceleración al usar el freno
