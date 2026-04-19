@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sign : MonoBehaviour
+public class RoadEntity : MonoBehaviour
 {
     [SerializeField] float SPEED;
 
-    public GameObject path;
-
     Queue<Transform> pathQueue;
 
-    void Start()
+    public void Init(GameObject path)
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
+    }
+
+    void Start()
+    {
+
     }
 
     void Update()

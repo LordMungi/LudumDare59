@@ -4,7 +4,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject PathLeft;
-    [SerializeField] Sign sign;
+    [SerializeField] RoadEntity sign;
+    [SerializeField] RoadEntity obstacle;
 
     [SerializeField] float MIN_SIGN_COOLDOWN;
     [SerializeField] float MAX_SIGN_COOLDOWN;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
     private float timeOfNextObstacle;
     private bool obstacleQueued;
 
-    private Sign signInstance;
+    private RoadEntity signInstance;
 
     private float timer;
 
@@ -46,12 +47,12 @@ public class GameManager : MonoBehaviour
         timeOfNextSign = timer + Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
     }
 
-    Sign SpawnSign(GameObject path)
+    RoadEntity SpawnSign(GameObject path)
     {
-        Sign newSign;
+        RoadEntity newSign;
         signQueued = false;
         newSign = Instantiate(sign);
-        newSign.path = path;
+        newSign.Init(path);
         return newSign;
     }
 }
