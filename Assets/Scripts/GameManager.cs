@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Car car;
+
     [SerializeField] GameObject pathLeft;
     [SerializeField] GameObject obstaclePathLeft;
     [SerializeField] GameObject obstaclePathRight;
@@ -10,12 +12,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] RoadEntity turnLeftSign;
     [SerializeField] RoadEntity obstacle;
 
-    [SerializeField] float MIN_SIGN_COOLDOWN;
-    [SerializeField] float MAX_SIGN_COOLDOWN;
+    [SerializeField] float MIN_SIGN_DISTANCE;
+    [SerializeField] float MAX_SIGN_DISTANCE;
 
-    private float timeOfNextSign;
+    [SerializeField] float OBSTACLE_COOLDOWN;
+
+    private float distanceOfNextSign;
     private bool signQueued;
-    private float timeOfNextObstacle;
+    private float distanceOfNextObstacle;
     private bool obstacleQueued;
 
     private RoadEntity signInstance;
@@ -23,19 +27,19 @@ public class GameManager : MonoBehaviour
 
     private GameObject nextObstaclePath;
 
-    private float timer;
+    private float distance;
 
     void Start()
     {
-        timer = 0.0f;
+        distance = 0.0f;
         QueueSign();
 
     }
     void Update()
     {
-        timer += Time.deltaTime;
+        distance += car.speed * Time.deltaTime;
 
-        if (signQueued && timer >= timeOfNextSign)
+        if (signQueued && distance >= distanceOfNextSign)
         {
             if (Random.Range(0, 2) == 1)
             {
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
             signQueued = false;
         }
 
-        if (obstacleQueued && timer >= timeOfNextObstacle)
+        if (obstacleQueued && distance >= distanceOfNextObstacle)
         {
             obstacleInstance = SpawnRoadEntity(obstacle, nextObstaclePath, QueueSign);
             obstacleQueued = false;
@@ -62,12 +66,12 @@ public class GameManager : MonoBehaviour
     void QueueSign()
     {
         signQueued = true;
-        timeOfNextSign = timer + UnityEngine.Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
+        distanceOfNextSign = distance + UnityEngine.Random.Range(MIN_SIGN_DISTANCE, MAX_SIGN_DISTANCE); 
     }
     void QueueObstacle()
     {
         obstacleQueued = true;
-        timeOfNextObstacle = timer + 3;
+        distanceOfNextObstacle = distance + OBSTACLE_COOLDOWN;
     }
 
     RoadEntity SpawnRoadEntity(RoadEntity prefab, GameObject path, UnityAction callback)
