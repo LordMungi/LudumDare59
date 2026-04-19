@@ -469,7 +469,7 @@ MonoBehaviour:
   pathLeft: {fileID: 612177453}
   obstaclePathLeft: {fileID: 1386670116}
   sign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
-  obstacle: {fileID: 0}
+  obstacle: {fileID: 8635861072564088040, guid: e4ede81769ff20e498920b24471ec1f3, type: 3}
   MIN_SIGN_COOLDOWN: 5
   MAX_SIGN_COOLDOWN: 10
 --- !u!4 &637353858
