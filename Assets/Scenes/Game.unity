@@ -499,7 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   pathLeft: {fileID: 612177453}
   obstaclePathLeft: {fileID: 1386670116}
-  obstaclePathRight: {fileID: 0}
+  obstaclePathRight: {fileID: 2128951556}
   turnRightSign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
   turnLeftSign: {fileID: 3384939707897463135, guid: c81925e4cd87f444bae4877d1a9f20d3, type: 3}
   obstacle: {fileID: 8635861072564088040, guid: e4ede81769ff20e498920b24471ec1f3, type: 3}
