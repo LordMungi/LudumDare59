@@ -3,6 +3,8 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Canvas pauseMenu;
+
     [SerializeField] Car car;
 
     [SerializeField] GameObject pathLeft;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     private RoadEntity signInstance;
     private RoadEntity obstacleInstance;
+
+    private Canvas pauseMenuInstance = null;
 
     private GameObject nextObstaclePath;
 
@@ -62,16 +66,24 @@ public class GameManager : MonoBehaviour
         }
 
         if (signInstance != null)
-           signInstance.FollowPath(car.speed);
+            signInstance.FollowPath(car.speed);
 
         if (obstacleInstance != null)
             obstacleInstance.FollowPath(car.speed);
+
+        if (Input.GetKeyDown("escape"))
+        {
+            if (pauseMenuInstance == null)
+                Pause();
+            else
+                Unpause();
+        }
     }
 
     void QueueSign()
     {
         signQueued = true;
-        distanceOfNextSign = distance + UnityEngine.Random.Range(MIN_SIGN_DISTANCE, MAX_SIGN_DISTANCE); 
+        distanceOfNextSign = distance + UnityEngine.Random.Range(MIN_SIGN_DISTANCE, MAX_SIGN_DISTANCE);
     }
     void QueueObstacle()
     {
@@ -85,5 +97,17 @@ public class GameManager : MonoBehaviour
         newRoadEntity = Instantiate(prefab);
         newRoadEntity.Init(path, callback);
         return newRoadEntity;
+    }
+
+    void Pause()
+    {
+        pauseMenuInstance = Instantiate(pauseMenu);
+        Time.timeScale = 0.0f;
+    }
+
+    void Unpause()
+    {
+        Time.timeScale = 1.0f;
+        Destroy(pauseMenuInstance.gameObject);
     }
 }

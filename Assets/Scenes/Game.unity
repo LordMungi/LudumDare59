@@ -579,6 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3238b9ed33ad2ca4b8804a2e22371201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  pauseMenu: {fileID: 8050208992314611785, guid: 93f2142d13e493240b0ffc180ac05f01, type: 3}
   car: {fileID: 2656972}
   pathLeft: {fileID: 612177453}
   obstaclePathLeft: {fileID: 1386670116}
