@@ -437,6 +437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   PathLeft: {fileID: 612177453}
   sign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
+  MIN_SIGN_COOLDOWN: 5
+  MAX_SIGN_COOLDOWN: 10
 --- !u!4 &637353858
 Transform:
   m_ObjectHideFlags: 0

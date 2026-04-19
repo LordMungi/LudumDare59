@@ -12,6 +12,7 @@ public class Sign : MonoBehaviour
     void Start()
     {
         pathQueue = CreatePathQueue(path);
+        transform.position = pathQueue.Peek().position;
     }
 
     void Update()

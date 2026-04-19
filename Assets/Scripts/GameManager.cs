@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
         if (signQueued && timer >= timeOfNextSign)
         {
-            SpawnSign();
+            signInstance = SpawnSign(PathLeft);
         }
 
     }
@@ -43,15 +43,15 @@ public class GameManager : MonoBehaviour
     void QueueSign()
     {
         signQueued = true;
-        timeOfNextSign = timer + 5;
+        timeOfNextSign = timer + Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
     }
 
-    void SpawnSign()
+    Sign SpawnSign(GameObject path)
     {
+        Sign newSign;
         signQueued = false;
-        signInstance = Instantiate(sign);
-        signInstance.path = PathLeft;
+        newSign = Instantiate(sign);
+        newSign.path = path;
+        return newSign;
     }
-
-
 }
