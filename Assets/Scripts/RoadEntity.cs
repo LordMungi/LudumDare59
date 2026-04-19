@@ -12,11 +12,10 @@ public class RoadEntity : MonoBehaviour
 
     [SerializeField] private UnityEvent onDestroyed;
 
-    public void Init(GameObject path, UnityAction callback, in float carSpeedRef)
+    public void Init(GameObject path, UnityAction callback)
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
-        carSpeed = carSpeedRef;
 
         onDestroyed.AddListener(callback);
     }
@@ -28,12 +27,12 @@ public class RoadEntity : MonoBehaviour
 
     void Update()
     {
-        FollowPath();
+
     }
 
-    private void FollowPath()
+    public void FollowPath(float speed)
     {
-        transform.position = Vector3.MoveTowards(transform.position, pathQueue.Peek().position, Time.deltaTime * SPEED * carSpeed * 0.1f);
+        transform.position = Vector3.MoveTowards(transform.position, pathQueue.Peek().position, Time.deltaTime * SPEED * speed * 0.1f);
         if (transform.position == pathQueue.Peek().position)
         {
             pathQueue.Dequeue();

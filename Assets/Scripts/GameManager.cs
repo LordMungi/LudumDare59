@@ -61,6 +61,11 @@ public class GameManager : MonoBehaviour
             obstacleQueued = false;
         }
 
+        if (signInstance != null)
+           signInstance.FollowPath(car.speed);
+
+        if (obstacleInstance != null)
+            obstacleInstance.FollowPath(car.speed);
     }
 
     void QueueSign()
@@ -78,7 +83,7 @@ public class GameManager : MonoBehaviour
     {
         RoadEntity newRoadEntity;
         newRoadEntity = Instantiate(prefab);
-        newRoadEntity.Init(path, callback, car.speed);
+        newRoadEntity.Init(path, callback);
         return newRoadEntity;
     }
 }
