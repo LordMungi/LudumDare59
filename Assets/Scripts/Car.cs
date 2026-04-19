@@ -78,19 +78,20 @@ public class Car : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger");
-        if (lives <= MAX_LIVES && lives > 0)
+        if (lives <= 1)
         {
+            GameOver();
             lives--;
         }
         else
         {
-            GameOver();
+            lives--;
         }
         Debug.Log(lives);
     }
 
     private void GameOver()
     {
-        //Debug.Log("Perdiste perro!");
+        Debug.Log("Perdiste perro!");
     }
 }
