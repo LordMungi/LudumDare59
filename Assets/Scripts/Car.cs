@@ -41,8 +41,6 @@ public class Car : MonoBehaviour
             Unbrake();
         }
         Steer(steeringWheel.wheelPosition);
-
-        Debug.Log(speed);
     }
 
     private void Brake()
@@ -74,5 +72,10 @@ public class Car : MonoBehaviour
 
         car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), car.transform.position.y, car.transform.position.z);
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Trigger");
     }
 }
