@@ -3,19 +3,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject Sign;
     [SerializeField] GameObject PathLeft;
+    [SerializeField] Sign sign;
 
-    [SerializeField] float SIGN_SPEED;
+    [SerializeField] float MIN_SIGN_COOLDOWN;
+    [SerializeField] float MAX_SIGN_COOLDOWN;
 
     private float timeOfNextSign;
     private bool signQueued;
     private float timeOfNextObstacle;
     private bool obstacleQueued;
 
-    private GameObject signInstance;
-
-    Queue<Transform> pathLeft;
+    private Sign signInstance;
 
     private float timer;
 
@@ -29,12 +28,16 @@ public class GameManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        if (signInstance == null && !signQueued)
+        {
+            QueueSign();
+        }
+
         if (signQueued && timer >= timeOfNextSign)
         {
             SpawnSign();
         }
 
-        FollowPath(pathLeft, signInstance);
     }
 
     void QueueSign()
@@ -46,35 +49,9 @@ public class GameManager : MonoBehaviour
     void SpawnSign()
     {
         signQueued = false;
-        signInstance = Instantiate(Sign);
-
-        pathLeft = CreatePathQueue(PathLeft);
+        signInstance = Instantiate(sign);
+        signInstance.path = PathLeft;
     }
 
-    private void FollowPath(Queue<Transform> path, GameObject sign)
-    {
-        if (sign != null)
-        {
-            sign.transform.position = Vector3.MoveTowards(sign.transform.position, path.Peek().position, Time.deltaTime * SIGN_SPEED);
-            if (sign.transform.position == path.Peek().position)
-            {
-                path.Dequeue();
-            }
-            if (path.Count == 0)
-            {
-                Destroy(sign);
-                QueueSign();
-            }
-        }
-    }
 
-    private Queue<Transform> CreatePathQueue(GameObject path)
-    {
-        Queue<Transform> pathQueue = new Queue<Transform>();
-        foreach (Transform child in path.transform)
-        {
-            pathQueue.Enqueue(child);
-        }
-        return pathQueue;
-    }
 }

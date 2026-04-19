@@ -435,7 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3238b9ed33ad2ca4b8804a2e22371201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Sign: {fileID: 4405967607233425108, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
+  PathLeft: {fileID: 612177453}
+  sign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
 --- !u!4 &637353858
 Transform:
   m_ObjectHideFlags: 0
@@ -1128,7 +1129,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1790907637130153823, guid: 5a8ced5519c516944b2bf21555b0ab4c, type: 3}
   m_Color: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
