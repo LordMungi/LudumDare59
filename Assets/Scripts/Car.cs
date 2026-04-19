@@ -26,7 +26,7 @@ public class Car : MonoBehaviour
 
     void Start()
     {
-       maxSpeed = INITIAL_SPEED;
+        maxSpeed = INITIAL_SPEED;
         lives = MAX_LIVES;
     }
 
@@ -78,5 +78,10 @@ public class Car : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger");
+    }
+
+    private void GameOver()
+    {
+
     }
 }
