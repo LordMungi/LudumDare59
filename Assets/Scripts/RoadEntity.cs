@@ -6,11 +6,15 @@ public class RoadEntity : MonoBehaviour
     [SerializeField] float SPEED;
 
     Queue<Transform> pathQueue;
+    public delegate void OnDestroy();
+    OnDestroy onDestroy; 
 
-    public void Init(GameObject path)
+    public void Init(GameObject path, OnDestroy callback)
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
+
+        onDestroy = callback;
     }
 
     void Start()
@@ -32,6 +36,7 @@ public class RoadEntity : MonoBehaviour
         }
         if (pathQueue.Count == 0)
         {
+            onDestroy();
             Destroy(gameObject);
         }
     }

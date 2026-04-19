@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject PathLeft;
+    [SerializeField] GameObject pathLeft;
+    [SerializeField] GameObject obstaclePathLeft;
     [SerializeField] RoadEntity sign;
     [SerializeField] RoadEntity obstacle;
 
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     private bool obstacleQueued;
 
     private RoadEntity signInstance;
+    private RoadEntity obstacleInstance;
 
     private float timer;
 
@@ -29,14 +31,16 @@ public class GameManager : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (signInstance == null && !signQueued)
-        {
-            QueueSign();
-        }
-
         if (signQueued && timer >= timeOfNextSign)
         {
-            signInstance = SpawnSign(PathLeft);
+            signInstance = SpawnRoadEntity(sign, pathLeft, QueueObstacle);
+            signQueued = false;
+        }
+
+        if (obstacleQueued && timer >= timeOfNextObstacle)
+        {
+            obstacleInstance = SpawnRoadEntity(sign, obstaclePathLeft, QueueSign);
+            obstacleQueued = false;
         }
 
     }
@@ -46,13 +50,17 @@ public class GameManager : MonoBehaviour
         signQueued = true;
         timeOfNextSign = timer + Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
     }
-
-    RoadEntity SpawnSign(GameObject path)
+    void QueueObstacle()
     {
-        RoadEntity newSign;
-        signQueued = false;
-        newSign = Instantiate(sign);
-        newSign.Init(path);
-        return newSign;
+        obstacleQueued = true;
+        timeOfNextObstacle = timer + 3;
+    }
+
+    RoadEntity SpawnRoadEntity(RoadEntity prefab, GameObject path, RoadEntity.OnDestroy callback)
+    {
+        RoadEntity newRoadEntity;
+        newRoadEntity = Instantiate(prefab);
+        newRoadEntity.Init(path, callback);
+        return newRoadEntity;
     }
 }

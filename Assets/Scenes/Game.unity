@@ -466,8 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3238b9ed33ad2ca4b8804a2e22371201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  PathLeft: {fileID: 612177453}
+  pathLeft: {fileID: 612177453}
+  obstaclePathLeft: {fileID: 1386670116}
   sign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
+  obstacle: {fileID: 0}
   MIN_SIGN_COOLDOWN: 5
   MAX_SIGN_COOLDOWN: 10
 --- !u!4 &637353858
