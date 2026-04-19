@@ -15,18 +15,19 @@ public class Car : MonoBehaviour
 
     [SerializeField] private float MAX_HORIZONTAL_POSITION; // Limite de posición horizontal del auto
     [SerializeField] private float HORIZONTAL_ACCELERATION; // Aceleración horizontal
+    [SerializeField] private int MAX_LIVES; // Vidas
 
 
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
     private float maxSpeed;
-
-
     private float horizontalSpeed;
+
+    private int lives; 
 
     void Start()
     {
        maxSpeed = INITIAL_SPEED;
-        
+        lives = MAX_LIVES;
     }
 
     void Update()
