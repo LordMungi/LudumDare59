@@ -19,10 +19,11 @@ public class Car : MonoBehaviour
 
 
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
+    [field: SerializeField] public int lives { get; private set; }
+
     private float maxSpeed;
     private float horizontalSpeed;
 
-    private int lives; 
 
     void Start()
     {
@@ -77,21 +78,8 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
-        if (lives <= 1)
-        {
-            GameOver();
+        if (lives > 0)
             lives--;
-        }
-        else
-        {
-            lives--;
-        }
-        Debug.Log(lives);
     }
 
-    private void GameOver()
-    {
-        Debug.Log("Perdiste perro!");
-    }
 }

@@ -247,6 +247,7 @@ MonoBehaviour:
   HORIZONTAL_ACCELERATION: 150
   MAX_LIVES: 3
   <speed>k__BackingField: 0
+  <lives>k__BackingField: 0
 --- !u!61 &2656973
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   pauseMenu: {fileID: 8050208992314611785, guid: 93f2142d13e493240b0ffc180ac05f01, type: 3}
+  gameoverMenu: {fileID: 8050208992314611785, guid: 03168d9bcd7e7dd458c92e1772f9d4b3, type: 3}
   car: {fileID: 2656972}
   pathLeft: {fileID: 612177453}
   obstaclePathLeft: {fileID: 1386670116}
@@ -587,9 +589,9 @@ MonoBehaviour:
   turnRightSign: {fileID: 3384939707897463135, guid: 84b3e3b7d2e2e834eb5dbf5bb5c16d2f, type: 3}
   turnLeftSign: {fileID: 3384939707897463135, guid: c81925e4cd87f444bae4877d1a9f20d3, type: 3}
   obstacle: {fileID: 8635861072564088040, guid: e4ede81769ff20e498920b24471ec1f3, type: 3}
-  MIN_SIGN_DISTANCE: 500
-  MAX_SIGN_DISTANCE: 1000
-  OBSTACLE_COOLDOWN: 300
+  MIN_SIGN_DISTANCE: 100
+  MAX_SIGN_DISTANCE: 300
+  OBSTACLE_COOLDOWN: 150
 --- !u!4 &637353858
 Transform:
   m_ObjectHideFlags: 0

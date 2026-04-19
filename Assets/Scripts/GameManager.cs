@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] Canvas pauseMenu;
+    [SerializeField] Canvas gameoverMenu;
 
     [SerializeField] Car car;
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     private RoadEntity obstacleInstance;
 
     private Canvas pauseMenuInstance = null;
+    private Canvas gameOverMenuInstance = null;
 
     private GameObject nextObstaclePath;
 
@@ -78,6 +80,11 @@ public class GameManager : MonoBehaviour
             else
                 Unpause();
         }
+
+        if (car.lives <= 0 && gameOverMenuInstance == null)
+        {
+            GameOver();
+        }
     }
 
     void QueueSign()
@@ -109,5 +116,11 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Destroy(pauseMenuInstance.gameObject);
+    }
+
+    void GameOver()
+    {
+        Time.timeScale = 0.0f;
+        gameOverMenuInstance = Instantiate(gameoverMenu);
     }
 }
