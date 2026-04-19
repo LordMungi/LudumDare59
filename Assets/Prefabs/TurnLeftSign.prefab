@@ -136,4 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a93d3d21a0717c46b08951251dc0dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  SPEED: 5
+  SPEED: 1
+  onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []

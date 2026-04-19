@@ -136,19 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a93d3d21a0717c46b08951251dc0dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  SPEED: 5
-  onDes:
+  SPEED: 1
+  onDestroyed:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4405967607233425108}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

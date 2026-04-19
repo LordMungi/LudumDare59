@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         RoadEntity newRoadEntity;
         newRoadEntity = Instantiate(prefab);
-        newRoadEntity.Init(path, callback);
+        newRoadEntity.Init(path, callback, car.speed);
         return newRoadEntity;
     }
 }
