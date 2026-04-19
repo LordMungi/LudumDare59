@@ -245,7 +245,8 @@ MonoBehaviour:
   UNBRAKE_SPEED: 150
   MAX_HORIZONTAL_POSITION: 30
   HORIZONTAL_ACCELERATION: 150
-  MAX_LIVES: 0
+
+  MAX_LIVES: 3
   <speed>k__BackingField: 0
 --- !u!61 &2656973
 BoxCollider2D:
