@@ -1,20 +1,23 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoadEntity : MonoBehaviour
 {
     [SerializeField] float SPEED;
 
     Queue<Transform> pathQueue;
-    public delegate void OnDestroy();
-    OnDestroy onDestroy; 
+    public Action onDestroyed;
 
-    public void Init(GameObject path, OnDestroy callback)
+    [SerializeField] private UnityEvent onDes;
+
+    public void Init(GameObject path, UnityAction callback)
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
 
-        onDestroy = callback;
+        onDes.AddListener(callback);
     }
 
     void Start()
@@ -36,7 +39,8 @@ public class RoadEntity : MonoBehaviour
         }
         if (pathQueue.Count == 0)
         {
-            onDestroy();
+            onDes.Invoke();
+            onDes.RemoveAllListeners();
             Destroy(gameObject);
         }
     }

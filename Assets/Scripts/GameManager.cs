@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     void QueueSign()
     {
         signQueued = true;
-        timeOfNextSign = timer + Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
+        timeOfNextSign = timer + UnityEngine.Random.Range(MIN_SIGN_COOLDOWN, MAX_SIGN_COOLDOWN); 
     }
     void QueueObstacle()
     {
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         timeOfNextObstacle = timer + 3;
     }
 
-    RoadEntity SpawnRoadEntity(RoadEntity prefab, GameObject path, RoadEntity.OnDestroy callback)
+    RoadEntity SpawnRoadEntity(RoadEntity prefab, GameObject path, UnityAction callback)
     {
         RoadEntity newRoadEntity;
         newRoadEntity = Instantiate(prefab);
