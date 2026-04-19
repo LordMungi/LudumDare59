@@ -5,7 +5,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pathLeft;
     [SerializeField] GameObject obstaclePathLeft;
-    [SerializeField] RoadEntity sign;
+    [SerializeField] GameObject obstaclePathRight;
+    [SerializeField] RoadEntity turnRightSign;
+    [SerializeField] RoadEntity turnLeftSign;
     [SerializeField] RoadEntity obstacle;
 
     [SerializeField] float MIN_SIGN_COOLDOWN;
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private RoadEntity signInstance;
     private RoadEntity obstacleInstance;
+
+    private GameObject nextObstaclePath;
 
     private float timer;
 
@@ -33,13 +37,23 @@ public class GameManager : MonoBehaviour
 
         if (signQueued && timer >= timeOfNextSign)
         {
-            signInstance = SpawnRoadEntity(sign, pathLeft, QueueObstacle);
+            if (Random.Range(0, 2) == 1)
+            {
+                signInstance = SpawnRoadEntity(turnRightSign, pathLeft, QueueObstacle);
+                nextObstaclePath = obstaclePathLeft;
+            }
+            else
+            {
+                signInstance = SpawnRoadEntity(turnLeftSign, pathLeft, QueueObstacle);
+                nextObstaclePath = obstaclePathRight;
+            }
+
             signQueued = false;
         }
 
         if (obstacleQueued && timer >= timeOfNextObstacle)
         {
-            obstacleInstance = SpawnRoadEntity(obstacle, obstaclePathLeft, QueueSign);
+            obstacleInstance = SpawnRoadEntity(obstacle, nextObstaclePath, QueueSign);
             obstacleQueued = false;
         }
 
