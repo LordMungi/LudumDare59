@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         if (obstacleQueued && timer >= timeOfNextObstacle)
         {
-            obstacleInstance = SpawnRoadEntity(sign, obstaclePathLeft, QueueSign);
+            obstacleInstance = SpawnRoadEntity(obstacle, obstaclePathLeft, QueueSign);
             obstacleQueued = false;
         }
 
