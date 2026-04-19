@@ -67,6 +67,11 @@ public class Car : MonoBehaviour
         else
             horizontalSpeed = Math.Max(horizontalSpeed - HORIZONTAL_ACCELERATION * Time.deltaTime, wheelPosition);
 
+        if (horizontalSpeed > 0)
+            horizontalSpeed = Math.Min(horizontalSpeed * speed, horizontalSpeed * INITIAL_SPEED) * 0.01f;
+        else
+            horizontalSpeed = Math.Max(horizontalSpeed * speed, horizontalSpeed * INITIAL_SPEED) * 0.01f;
+
         car.transform.position = new Vector3 ( Math.Clamp(car.transform.position.x + horizontalSpeed * Time.deltaTime, -MAX_HORIZONTAL_POSITION, MAX_HORIZONTAL_POSITION), car.transform.position.y, car.transform.position.z);
 
     }
