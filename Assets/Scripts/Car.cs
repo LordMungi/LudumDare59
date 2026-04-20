@@ -11,7 +11,7 @@ public class Car : MonoBehaviour
     [SerializeField] private float INITIAL_SPEED; // Velocidad inicial al empezar el juego
     [SerializeField] private float BRAKE_SPEED; // Velocidad de desaceleración al usar el freno
     [SerializeField] private float UNBRAKE_SPEED; // Aceleración al dejar de frenar
-
+    [SerializeField] private Animator streetAnimation;
 
     [SerializeField] private float MAX_HORIZONTAL_POSITION; // Limite de posición horizontal del auto
     [SerializeField] private float HORIZONTAL_ACCELERATION; // Aceleración horizontal
@@ -49,11 +49,13 @@ public class Car : MonoBehaviour
     {
         // Frenar
         speed = Mathf.Max(speed - BRAKE_SPEED * Time.deltaTime, 0);
+        streetAnimation.speed = speed / maxSpeed;
     }
     private void Unbrake()
     {
         // Desfrenar 
        speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, maxSpeed);
+       streetAnimation.speed = speed / maxSpeed;
     }
 
     private void Steer(float wheelPosition)
