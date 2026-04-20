@@ -184,10 +184,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a93d3d21a0717c46b08951251dc0dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoadEntity
-  SPEED: 10
+  SPEED: 5
   onDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  spriteRenderer: {fileID: 3017761159649408788}
 --- !u!50 &5943154075706152480
 Rigidbody2D:
   serializedVersion: 5

@@ -10,19 +10,21 @@ public class RoadEntity : MonoBehaviour
     Queue<Transform> pathQueue;
     private float carSpeed;
 
+
     [SerializeField] private UnityEvent onDestroyed;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     public void Init(GameObject path, UnityAction callback)
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
+        spriteRenderer.sortingOrder = (int)pathQueue.Peek().position.z;
 
         onDestroyed.AddListener(callback);
     }
 
     void Start()
     {
-
     }
 
     void Update()
@@ -35,6 +37,7 @@ public class RoadEntity : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, pathQueue.Peek().position, Time.deltaTime * SPEED * speed * 0.1f);
         if (transform.position == pathQueue.Peek().position)
         {
+            spriteRenderer.sortingOrder = (int)pathQueue.Peek().position.z;
             pathQueue.Dequeue();
         }
         if (pathQueue.Count == 0)
