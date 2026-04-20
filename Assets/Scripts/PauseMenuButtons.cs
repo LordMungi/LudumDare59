@@ -28,4 +28,10 @@ public class PauseMenuButtons : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
+
+    private void OnDestroy()
+    {
+        resumeButton.onClick.RemoveListener(Resume);
+        mainMenuButton.onClick.RemoveListener(MainMenu);
+    }
 }

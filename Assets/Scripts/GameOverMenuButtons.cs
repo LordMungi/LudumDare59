@@ -28,4 +28,10 @@ public class GameOverMenuButtons : MonoBehaviour
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("MainMenu");
     }
+
+    private void OnDestroy()
+    {
+        restartButton.onClick.RemoveListener(Restart);
+        mainMenuButton.onClick.RemoveListener(MainMenu);
+    }
 }
