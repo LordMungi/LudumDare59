@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 
@@ -17,6 +18,7 @@ public class Car : MonoBehaviour
     [SerializeField] private float HORIZONTAL_ACCELERATION; // Aceleración horizontal
     [SerializeField] private int MAX_LIVES; // Vidas
 
+    [SerializeField] private TextMeshProUGUI carSpeedText;
 
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
     [field: SerializeField] public int lives { get; private set; }
@@ -49,13 +51,15 @@ public class Car : MonoBehaviour
     {
         // Frenar
         speed = Mathf.Max(speed - BRAKE_SPEED * Time.deltaTime, 0);
+        carSpeedText.text = (int)speed + " KM";
         streetAnimation.speed = speed / maxSpeed;
     }
     private void Unbrake()
     {
         // Desfrenar 
-       speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, maxSpeed);
-       streetAnimation.speed = speed / maxSpeed;
+        speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, maxSpeed);
+        carSpeedText.text = (int)speed + " KM";
+        streetAnimation.speed = speed / maxSpeed;
     }
 
     private void Steer(float wheelPosition)
