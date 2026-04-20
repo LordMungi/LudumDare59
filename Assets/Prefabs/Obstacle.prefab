@@ -190,6 +190,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   spriteRenderer: {fileID: 1115287459315204018}
+  possibleSprites:
+  - {fileID: 8043091600683127539, guid: 3140dbe6c45265a4487537ad91c327fb, type: 3}
+  - {fileID: -3959246620191285140, guid: 0509226d81e77704ab3ab2420a4253aa, type: 3}
 --- !u!50 &5943154075706152480
 Rigidbody2D:
   serializedVersion: 5

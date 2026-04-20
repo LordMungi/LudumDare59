@@ -137,7 +137,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   SPEED: 1
+  RESIZE_SPEED: 0.1
   onDestroyed:
     m_PersistentCalls:
       m_Calls: []
   spriteRenderer: {fileID: 7449841180138674857}
+  possibleSprites:
+  - {fileID: -78534007678281938, guid: 5546520414940cf49b1767941e594bbc, type: 3}
+  - {fileID: 922404497386465697, guid: a464f3f31187a4349a067324c7ab626d, type: 3}
+  - {fileID: 4071494290855992768, guid: 130c579415493b3419730e7554a46fda, type: 3}
+  - {fileID: -6326295409268207239, guid: d686fc91a6e41734e83281be4fe73f7c, type: 3}

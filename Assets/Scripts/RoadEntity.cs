@@ -15,6 +15,8 @@ public class RoadEntity : MonoBehaviour
     [SerializeField] private UnityEvent onDestroyed;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private Sprite[] possibleSprites;
+
     public void Init(GameObject path, UnityAction callback)
     {
         pathQueue = CreatePathQueue(path);
@@ -27,6 +29,7 @@ public class RoadEntity : MonoBehaviour
 
     void Start()
     {
+        spriteRenderer.sprite = possibleSprites[UnityEngine.Random.Range(0, possibleSprites.Length)];
     }
 
     void Update()
