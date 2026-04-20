@@ -20,6 +20,8 @@ public class Car : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI carSpeedText;
 
+    [SerializeField] private GameObject window;
+
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
     [field: SerializeField] public int lives { get; private set; }
 
@@ -84,8 +86,10 @@ public class Car : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        window.transform.GetChild(lives).gameObject.SetActive(false);
         if (lives > 0)
             lives--;
+        window.transform.GetChild(lives).gameObject.SetActive(true);
     }
 
 }
