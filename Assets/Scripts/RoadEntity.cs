@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class RoadEntity : MonoBehaviour
 {
     [SerializeField] float SPEED;
+    const float RESIZE_SPEED = 0.1f;
 
     Queue<Transform> pathQueue;
     private float carSpeed;
@@ -18,6 +19,7 @@ public class RoadEntity : MonoBehaviour
     {
         pathQueue = CreatePathQueue(path);
         transform.position = pathQueue.Peek().position;
+        transform.localScale = pathQueue.Peek().localScale;
         spriteRenderer.sortingOrder = (int)pathQueue.Peek().position.z;
 
         onDestroyed.AddListener(callback);
@@ -35,6 +37,7 @@ public class RoadEntity : MonoBehaviour
     public void FollowPath(float speed)
     {
         transform.position = Vector3.MoveTowards(transform.position, pathQueue.Peek().position, Time.deltaTime * SPEED * speed * 0.1f);
+        transform.localScale = Vector3.MoveTowards(transform.localScale, pathQueue.Peek().localScale, Time.deltaTime * RESIZE_SPEED * speed * 0.1f);
         if (transform.position == pathQueue.Peek().position)
         {
             spriteRenderer.sortingOrder = (int)pathQueue.Peek().position.z;

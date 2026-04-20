@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Car car;
 
     [SerializeField] GameObject pathLeft;
+    [SerializeField] GameObject pathRight;
     [SerializeField] GameObject obstaclePathLeft;
     [SerializeField] GameObject obstaclePathRight;
     [SerializeField] RoadEntity turnRightSign;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     private bool obstacleQueued;
 
     private RoadEntity signInstance;
+    private RoadEntity signInstance2;
     private RoadEntity obstacleInstance;
 
     private Canvas pauseMenuInstance = null;
@@ -50,11 +52,13 @@ public class GameManager : MonoBehaviour
             if (Random.Range(0, 2) == 1)
             {
                 signInstance = SpawnRoadEntity(turnRightSign, pathLeft, QueueObstacle);
+                signInstance2 = SpawnRoadEntity(turnRightSign, pathRight, QueueObstacle);
                 nextObstaclePath = obstaclePathLeft;
             }
             else
             {
                 signInstance = SpawnRoadEntity(turnLeftSign, pathLeft, QueueObstacle);
+                signInstance2 = SpawnRoadEntity(turnLeftSign, pathRight, QueueObstacle);
                 nextObstaclePath = obstaclePathRight;
             }
 
@@ -68,7 +72,10 @@ public class GameManager : MonoBehaviour
         }
 
         if (signInstance != null)
+        {
             signInstance.FollowPath(car.speed);
+            signInstance2.FollowPath(car.speed);
+        }
 
         if (obstacleInstance != null)
             obstacleInstance.FollowPath(car.speed);
