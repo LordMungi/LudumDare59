@@ -24,6 +24,8 @@ public class Car : MonoBehaviour
 
     [SerializeField] private Sprite[] windowSprites;
 
+    [SerializeField] private AudioSource crashSFX;
+
     [field: SerializeField] public float speed { get; private set; } = 0.0f;
     [field: SerializeField] public int lives { get; private set; }
 
@@ -56,14 +58,14 @@ public class Car : MonoBehaviour
     {
         // Frenar
         speed = Mathf.Max(speed - BRAKE_SPEED * Time.deltaTime, 0);
-        carSpeedText.text = (int)speed + " KM";
+        carSpeedText.text = (int)speed + " KPH";
         streetAnimation.speed = speed / maxSpeed;
     }
     private void Unbrake()
     {
         // Desfrenar 
         speed = Mathf.Min(speed + UNBRAKE_SPEED * Time.deltaTime, maxSpeed);
-        carSpeedText.text = (int)speed + " KM";
+        carSpeedText.text = (int)speed + " KPH";
         streetAnimation.speed = speed / maxSpeed;
     }
 
@@ -93,6 +95,7 @@ public class Car : MonoBehaviour
         {
             lives--;
             window.sprite = windowSprites[windowSprites.Length - 1 - lives];
+            crashSFX.Play();
         }
     }
 
