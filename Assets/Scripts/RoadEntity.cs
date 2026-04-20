@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class RoadEntity : MonoBehaviour
 {
     [SerializeField] float SPEED;
-    const float RESIZE_SPEED = 0.1f;
+    [SerializeField] float RESIZE_SPEED = 0.1f;
 
     Queue<Transform> pathQueue;
     private float carSpeed;
