@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Canvas pauseMenu;
     [SerializeField] Canvas gameoverMenu;
+    [SerializeField] TextMeshProUGUI gameoverText;
 
     [SerializeField] Car car;
 
@@ -32,7 +34,6 @@ public class GameManager : MonoBehaviour
     private RoadEntity obstacleInstance;
 
     private Canvas pauseMenuInstance = null;
-    private Canvas gameOverMenuInstance = null;
 
     private GameObject nextObstaclePath;
 
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
                 Unpause();
         }
 
-        if (car.lives <= 0 && gameOverMenuInstance == null)
+        if (car.lives <= 0 && gameoverMenu.gameObject.activeSelf == false)
         {
             GameOver();
         }
@@ -129,6 +130,8 @@ public class GameManager : MonoBehaviour
     void GameOver()
     {
         Time.timeScale = 0.0f;
-        gameOverMenuInstance = Instantiate(gameoverMenu);
+        gameoverText.text = "Distance: " + (int)distance / 1000 + "KM";
+        gameoverMenu.gameObject.SetActive(true);
+        
     }
 }
