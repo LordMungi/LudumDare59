@@ -1,4 +1,4 @@
-# Synopsis
+# Terry's Trip
 Bored? Got nothing to do? Drunk? Look no further, because Terry is on a trip to make your day! Enjoy this exciting and... slightly dangerous journey on a seemingly endless highway, where you drive on (somehow) two completely opposite lanes filled with hopeless drivers who don't know how to brake. Follow the traffic signs from left to right, but don't get confused! Some of these were put there by terrible people in a terrible fit of rage, and... yes, I'm making jokes about Terry, whom we mustn't forget and remember we'll have to save from crashing into the cars, even though the correct signs would tell him to move into the other lane to avoid the car. Good luck on this TERRIBLE adventure!
 
 https://www.youtube.com/watch?v=TuNN7dnAH08
